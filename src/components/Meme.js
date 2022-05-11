@@ -16,12 +16,27 @@ export default function Meme() {
 		const { url } = allMemeImages.data.memes[randomNumber];
 		setMeme((prevMeme) => ({ ...prevMeme, randomImage: url }));
 	};
-
+	function changeHandler(event) {
+		setMeme((prevMeme) => {
+			const { name, value } = event.target;
+			return { ...prevMeme, [name]: value };
+		});
+	}
 	return (
 		<main>
 			<div className="form">
-				<input placeholder="Top text" className="meme--top"></input>
-				<input placeholder="Bottom text" className="meme--bottom"></input>
+				<input
+					placeholder="Top text"
+					className="meme--top"
+					name="topText"
+					onChange={changeHandler}
+				></input>
+				<input
+					placeholder="Bottom text"
+					className="meme--bottom"
+					name="bottomText"
+					onChange={changeHandler}
+				></input>
 				<button className="form-btn" onClick={clickHandler}>
 					Get a new meme image 🖼
 				</button>
