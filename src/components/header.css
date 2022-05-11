@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+header {
+    height: 65px;
+    background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);
+    display: flex;
+    align-items: center;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.header--image {
+    width: 31.31px;
+    height: 26.22px;
+    margin-right: 6px;
+}
+header h2 {
+    font-family: 'Karla', sans-serif;
+    font-size: 1.25rem;
+    margin-right: auto;
+}
+header p {
+    font-size: .75rem;
+    font-family: 'Inter', sans-serif;
+}
