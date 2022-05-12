@@ -7,4 +7,4 @@ controlled inputs,
 useEffect(),
 imgflip API
 
-GitHub URL
+GitHub URL https://gytandr.github.io/react-meme-generator/
