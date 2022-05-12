@@ -1,21 +1,27 @@
 import "./Meme.css";
-import memesData from "../memesData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Meme() {
+	//Card properties state
 	const [meme, setMeme] = useState({
 		topText: "",
 		bottomText: "",
 		randomImage: "http://i.imgflip.com/1bij.jpg",
 	});
-	const [allMemeImages, setMemeImages] = useState(memesData);
+	//Meme image state
+	const [allMemeImages, setMemeImages] = useState([]);
 	const clickHandler = () => {
-		const randomNumber = Math.floor(
-			Math.random() * allMemeImages.data.memes.length
-		);
-		const { url } = allMemeImages.data.memes[randomNumber];
+		const randomNumber = Math.floor(Math.random() * allMemeImages.length);
+		const { url } = allMemeImages[randomNumber];
 		setMeme((prevMeme) => ({ ...prevMeme, randomImage: url }));
 	};
+	//API request useEffect()
+	useEffect(() => {
+		fetch("https://api.imgflip.com/get_memes").then((res) =>
+			res.json().then((data) => setMemeImages(data.data.memes))
+		);
+	}, []);
+
 	function changeHandler(event) {
 		setMeme((prevMeme) => {
 			const { name, value } = event.target;
@@ -42,7 +48,7 @@ export default function Meme() {
 				</button>
 			</div>
 			<div className="meme">
-				<img src={meme.randomImage} className="meme--image" />
+				<img src={meme.randomImage} alt="meme" className="meme--image" />
 				<h2 className="meme--text top">{meme.topText}</h2>
 				<h2 className="meme--text bottom">{meme.bottomText}</h2>
 			</div>
